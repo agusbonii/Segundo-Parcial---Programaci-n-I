@@ -21,7 +21,7 @@
     <?php 
 
     $sql = "SELECT * FROM publicaciones";
-    $resultado = PostBlogControlador::ejcutarSentenciaDevuelveResultado($sql,1);
+    $resultado = PostBlogControlador::BuscarTodos();
 
     if($resultado) foreach($resultado as $fila) :
     ?>
