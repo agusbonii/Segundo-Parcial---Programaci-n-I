@@ -26,15 +26,16 @@
     
     if($resultado) foreach($resultado as $fila) :
     ?>
-    <b>ID: </b>  <?=$fila -> Id?> 
-    <b>Autor: </b>  <?=$fila -> Autor?> 
-    <b>Fecha y Hora de Publicacion: </b> <?=$fila -> FechaYHora?> <br>
-    <?=$fila -> Cuerpo?>
+    <form action="/publicacion/baja" method="post">
+        <b>ID: </b>  <input type="text" name="id" value="<?=$fila -> Id?>">
+        <b>Autor: </b>  <input type="text" name="autor" value="<?=$fila -> Autor?>">
+        <b>Fecha y Hora de Publicacion: </b>  <input type="text" name="" value="<?=$fila -> fechaYHora?>"> <br>
+        <textarea name="cuerpo"><?=$fila -> Cuerpo?><textarea/>
+        <input type="text" name="" value=""><br>
+        <input type="button" onclick="window.location='/publicacion/modificacion'" value="Modificar">
+        <input type="submit" value="Borrar"><br>
+    </form><br>
 
-    <br>
-    <a href="/publicacion/modificacion">Modificar</a>
-    <a href="/publicacion/baja">Borrar</a>
-    <br>
     <?php endforeach; ?>
 </body>
 </html>
