@@ -18,19 +18,23 @@
     <title>Inicio</title>
 </head>
 <body>
+    <a href="">Agregar Publicación</a><br><br>
     <?php 
 
-    $sql = "SELECT * FROM publicaciones";
     $resultado = PostBlogControlador::BuscarTodos();
-
+    
+    
     if($resultado) foreach($resultado as $fila) :
     ?>
-    <b>ID: </b>  <?=$fila['id']?> 
-    <b>autor: </b>  <?=$fila['autor']?> 
-    <b>Fecha y Hora de Publicacion: </b> <?=$fila['fechaYHora']?> <br>
-    <?=$fila['cuerpo']?>
+    <b>ID: </b>  <?=$fila -> Id?> 
+    <b>Autor: </b>  <?=$fila -> Autor?> 
+    <b>Fecha y Hora de Publicacion: </b> <?=$fila -> FechaYHora?> <br>
+    <?=$fila -> Cuerpo?>
 
-    <br />
+    <br>
+    <a href="">Modificar</a>
+    <a href="">Borrar</a>
+    <br>
     <?php endforeach; ?>
 </body>
 </html>
