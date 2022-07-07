@@ -5,6 +5,7 @@ require "../utils/autoload.php";
     class UsuarioModelo extends Modelo{
         public $Id;
         public $Nombre;
+        public $NombreCompleto;
         public $Password;
         
 
@@ -22,8 +23,9 @@ require "../utils/autoload.php";
         }
 
         private function insertar(){
-            $sql = "INSERT INTO usuario (username,password) VALUES (
+            $sql = "INSERT INTO usuario (username,complete_name,password) VALUES (
             '" . $this -> Nombre . "',
+            '" . $this -> NombreCompleto . "',
             '" . $this -> hashearPassword($this -> Password) . "')";
 
             $this -> conexionBaseDeDatos -> query($sql);
@@ -36,6 +38,7 @@ require "../utils/autoload.php";
         private function actualizar(){
             $sql = "UPDATE usuario SET
             username = '" . $this -> Nombre . "',
+            complete_name = '" . $this -> NombreCompleto . "',
             password = '" . $this -> Password . "'
             WHERE id = " . $this -> id;
             $this -> conexionBaseDeDatos -> query($sql);
@@ -47,6 +50,7 @@ require "../utils/autoload.php";
 
             $this -> Id = $fila['id'];
             $this -> Nombre = $fila['username'];
+            $this -> NombreCompleto = $fila['complete_name'];
         }
 
         public function Eliminar(){
@@ -63,6 +67,7 @@ require "../utils/autoload.php";
                 $p = new UsuarioModelo();
                 $p -> Id = $fila['id'];
                 $p -> Nombre = $fila['username'];
+                $p -> NombreCompleto = $fila['complete_name'];
                 array_push($resultado,$p);
             }
             return $resultado;
