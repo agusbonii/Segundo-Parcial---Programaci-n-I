@@ -1,12 +1,12 @@
 <?php 
 require "../utils/autoload.php";
 
-class UsuarioControlador {
+class PostBlogControlador {
     public static function Alta($context){
-        $u = new UsuarioModelo();
-        $u -> Nombre = $context['post']['usuario'];
-        $u -> Password = $context['post']['password'];
-        $u -> Guardar();
+        $publicacion = new PostBlogModelo();
+        $publicacion -> Nombre = $context['post']['usuario'];
+        $publicacion -> Password = $context['post']['password'];
+        $publicacion -> Guardar();
     }
 }
 
