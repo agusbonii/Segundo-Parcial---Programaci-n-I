@@ -24,9 +24,9 @@ require "../utils/autoload.php";
 
         private function insertar(){
             $sql = "INSERT INTO publicaciones (autor,fechaYHora,cuerpo) VALUES (
-            '" . $this -> autor . "',
-            '" . $this -> fechaYHora . "',
-            '" . $this -> cuerpo . "')";
+            '" . $this -> Autor . "',
+            '" . $this -> FechaYHora . "',
+            '" . $this -> Cuerpo . "')";
 
             $this -> conexionBaseDeDatos -> query($sql);
         }

@@ -18,7 +18,7 @@
     <title>Inicio</title>
 </head>
 <body>
-    <a href="">Agregar Publicación</a><br><br>
+    <a href="/publicacion/alta">Agregar Publicación</a><br><br>
     <?php 
 
     $resultado = PostBlogControlador::BuscarTodos();
@@ -32,8 +32,8 @@
     <?=$fila -> Cuerpo?>
 
     <br>
-    <a href="">Modificar</a>
-    <a href="">Borrar</a>
+    <a href="/publicacion/modificacion">Modificar</a>
+    <a href="/publicacion/baja">Borrar</a>
     <br>
     <?php endforeach; ?>
 </body>
