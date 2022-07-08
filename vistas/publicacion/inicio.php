@@ -26,7 +26,7 @@
     
     if($resultado) foreach($resultado as $fila) :
     ?>
-    <form action="/publicacion/modificar" method="post">
+    <form action="/publicacion/modificacion" method="post">
         <b>ID: </b>  <input type="text" name="id" value="<?=$fila -> Id?>"><br>
         <b>Autor: </b>  <input type="text" name="autor" value="<?=$fila -> Autor?>"><br>
         <b>Fecha y Hora de Publicacion: </b>  <input type="datetime" name="" value="<?=$fila -> fechaYHora?>"> <br>
