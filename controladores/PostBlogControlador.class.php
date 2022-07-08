@@ -15,6 +15,7 @@ class PostBlogControlador {
     public static function Baja($context){
         $publicacion = new PostBlogModelo();
         $publicacion -> Id = $context['get']['id'];
+        $publicacion -> Autor = $_SESSION['nombreUsuario'];
         
         if ($publicacion -> Eliminar()) return header("Location: /inicio");
         else render("publicacion/mispublicaciones",["error" => true]);
