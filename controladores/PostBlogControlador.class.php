@@ -36,9 +36,16 @@ class PostBlogControlador {
         $publicacion -> Obtener();
     }
 
+    public function BuscarPublicacionAutores(){
+        $publicacion = new PostBlogModelo();
+        $publicacion -> Autor = $_SESSION['nombreUsuario'];
+        $resultado = $publicacion -> ObtenerPublicacionAutores();
+        return $resultado;
+    }
+
     public static function BuscarTodos(){
         $publicacion = new PostBlogModelo();
-        $resultado = $publicacion -> obtenerTodos();
+        $resultado = $publicacion -> ObtenerTodos();
         return $resultado;
     }
 }

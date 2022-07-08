@@ -6,6 +6,7 @@
     Routes::AddView("/inicio","publicacion/inicio");
     Routes::AddView("/publicacion/alta","publicacion/alta");
     Routes::AddView("/publicacion/modificacion","publicacion/inicio");
+    Routes::AddView("/publicacion/mispublicaciones","publicacion/misPublicaciones");
 
     Routes::Add("/login","post","SesionControlador::IniciarSesion");
     Routes::Add("/publicacion/alta","post","PostBlogControlador::Alta");
