@@ -48,22 +48,27 @@ require "../utils/autoload.php";
             else return false;
         }
 
-        public function Obtener(){
-            $sql = "SELECT * FROM usuario WHERE id = " . $this ->id;
-            $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
-
-            $this -> Id = $fila['id'];
-            $this -> Nombre = $fila['username'];
-            $this -> NombreCompleto = $fila['complete_name'];
-            return $fila;
-        }
-
         public function ObtenerID(){
             $sql = "SELECT id FROM usuario WHERE username = '" . $this -> Nombre . "'";
             $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
             $Id = $fila['id'];
             return $Id;
         }
+        
+        public function Obtener(){
+            $sql = "SELECT * FROM usuario WHERE id = " . $this ->Id;
+            $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
+            
+            $resultado = array();
+            $resultado['Id'] = $fila['id'];
+            $resultado['Nombre'] = $fila['username'];
+            $resultado['NombreCompleto'] = $fila['complete_name'];
+            
+            array_push($resultado);
+            
+            return $resultado;
+        }
+
 
         public function Eliminar(){
             $sql = "DELETE FROM usuario WHERE id = " . $this ->Id;
