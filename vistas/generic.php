@@ -12,3 +12,4 @@
 </head>
 <body>
     <h1>Fabrica de Chacinados - <?= $Seccion ?></h1>
+    <a href="/inicio">Inicio</a>

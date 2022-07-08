@@ -1,12 +1,14 @@
 <?php 
     require "../utils/autoload.php";
     if(!isset($_SESSION['autenticado']))
-        header("Location: /");
+        header("Location: /inicio");
+    
+    if(!isset($_SESSION['nombreUsuario']))
+        header('Location: /login');
 
     $Seccion="Modificar Perfil";
     require "../vistas/generic.php";
 ?>
-    <a href="/">Inicio</a>
     <form action="/usuarios/modificacion" method="post">
         Usuario <input type="text" name="usuario" value=<?=$_SESSION['nombreUsuario']?> readonly> <br />
         Nombres <input type="text" name="nombres" require> <br />

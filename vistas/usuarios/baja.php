@@ -1,14 +1,13 @@
 <?php 
     require "../utils/autoload.php";
     if(!isset($_SESSION['autenticado']))
-        header("Location: /");
+        header("Location: /inicio");
     
-    if(!isset($_SESSION['nombreUsuario'])){
+    if(!isset($_SESSION['nombreUsuario']))
         header('Location: /login');
-    }
+    
     
 ?>
-    <a href="/">Inicio</a>
     <script language="JavaScript">
         function confirmar(){
             if (confirm('¿Estas seguro de enviar este formulario?')){
