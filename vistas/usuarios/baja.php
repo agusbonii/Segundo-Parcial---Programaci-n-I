@@ -24,4 +24,3 @@
     <?php if(isset($parametros['error']) && $parametros['error'] === true ) :?>
         <div style="color: red;">Ocurrió un problema al eliminar tu usuario.</div>
     <?php endif;?>
-    <?php if(isset($parametros['error']) && $parametros['error'] === false ) header("Location: /logout");?>
