@@ -18,8 +18,8 @@ require "../utils/autoload.php";
         }
 
         public function Guardar(){
-            if($this -> Id == NULL) $this -> insertar();
-            else $this -> actualizar();
+            if($this -> Id == NULL) return($this -> insertar());
+            else return ($this -> actualizar());
         }
 
         private function insertar(){
@@ -29,6 +29,8 @@ require "../utils/autoload.php";
             '" . $this -> hashearPassword($this -> Password) . "')";
 
             $this -> conexionBaseDeDatos -> query($sql);
+            if ($this -> conexionBaseDeDatos -> error_list[0]['errno'] == 0) return true;
+            else return false;
         }
 
         private function hashearPassword($password){
@@ -42,6 +44,8 @@ require "../utils/autoload.php";
             password = '" . $this -> Password . "'
             WHERE id = " . $this -> id;
             $this -> conexionBaseDeDatos -> query($sql);
+            if ($this -> conexionBaseDeDatos -> error_list[0]['errno'] == 0) return true;
+            else return false;
         }
 
         public function Obtener(){
@@ -51,11 +55,14 @@ require "../utils/autoload.php";
             $this -> Id = $fila['id'];
             $this -> Nombre = $fila['username'];
             $this -> NombreCompleto = $fila['complete_name'];
+            return $fila;
         }
 
         public function Eliminar(){
             $sql = "DELETE FROM usuario WHERE id = " . $this ->Id;
             $this -> conexionBaseDeDatos -> query($sql);
+            if ($this -> conexionBaseDeDatos -> error_list[0]['errno'] == 0) return true;
+            else return false;
         }
 
         public function ObtenerTodos(){

@@ -5,25 +5,28 @@
         public static function Alta($context){
             $u = new UsuarioModelo();
             $u -> Nombre = $context['post']['usuario'];
-            $u -> NombreCompleto = $context['post']['nombres']. " " .$context['post']['apellidos'];
+            $u -> NombreCompleto = $context['post']['nombres']. " " . $context['post']['apellidos'];
             $u -> Password = $context['post']['password'];
-            $u -> Guardar();
+            if ($u -> Guardar()) render("usuarios/alta",["error" => false]);
+            else render("usuarios/alta",["error" => true]);
         }
 
         public static function Modificacion($context){
             $u = new UsuarioModelo();
             $u -> Nombre = $context['post']['usuario'];
-            $u -> NombreCompleto = $context['post']['nombres']. " " .$context['post']['apellidos'];
+            $u -> NombreCompleto = $context['post']['nombres']. " " . $context['post']['apellidos'];
             $u -> Password = $context['post']['password'];
-            $u -> Guardar();
+            if ($u -> Guardar()) render("usuarios/modificacion",["error" => false]);
+            else render("usuarios/modificacion",["error" => true]);
         }
 
         public static function Baja($context){
             $u = new UsuarioModelo();
             $u -> Nombre = $context['post']['usuario'];
-            $u -> NombreCompleto = $context['post']['nombres']. " " .$context['post']['apellidos'];
+            $u -> NombreCompleto = $context['post']['nombres']. " " . $context['post']['apellidos'];
             $u -> Password = $context['post']['password'];
-            $u -> Eliminar();
+            if ($u -> Eliminar()) render("usuarios/baja",["error" => false]);
+            else render("usuarios/baja",["error" => true]);
         }
     }
 
