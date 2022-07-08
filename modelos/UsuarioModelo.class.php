@@ -41,8 +41,8 @@ require "../utils/autoload.php";
             $sql = "UPDATE usuario SET
             username = '" . $this -> Nombre . "',
             complete_name = '" . $this -> NombreCompleto . "',
-            password = '" . $this -> Password . "'
-            WHERE id = " . $this -> id;
+            password = '" . $this -> hashearPassword($this -> Password) . "'
+            WHERE id = " . $this -> Id;
             $this -> conexionBaseDeDatos -> query($sql);
             if ($this -> conexionBaseDeDatos -> error_list[0]['errno'] == 0) return true;
             else return false;
@@ -56,6 +56,13 @@ require "../utils/autoload.php";
             $this -> Nombre = $fila['username'];
             $this -> NombreCompleto = $fila['complete_name'];
             return $fila;
+        }
+
+        public function ObtenerID(){
+            $sql = "SELECT id FROM usuario WHERE username = '" . $this -> Nombre . "'";
+            $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
+            $Id = $fila['id'];
+            return $Id;
         }
 
         public function Eliminar(){
