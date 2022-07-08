@@ -9,8 +9,9 @@
 
     Routes::Add("/login","post","SesionControlador::IniciarSesion");
     Routes::Add("/publicacion/alta","post","PostBlogControlador::Alta");
-    Routes::Add("/publicacion/baja","post","PostBlogControlador::Baja");
+    Routes::Add("/publicacion/baja?id=" . $_GET["id"] ,"get","PostBlogControlador::Baja");
     Routes::Add("/publicacion/modificacion","post","PostBlogControlador::Modificacion");
+    Routes::Add("/publicacion/buscar","post","PostBlogControlador::BuscarUno");
 
     Routes::Run();
 

@@ -55,10 +55,21 @@ require "../utils/autoload.php";
             $this -> Cuerpo = $fila['cuerpo'];
         }
 
+        public function ObtenerPublicacionAutores(){
+            $sql = "SELECT * FROM publicaciones WHERE autor = " . $this -> Autor;
+            $filas = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC);
+
+            return self::insertarDatosDentroDeArray($filas);
+        }
+
         public function ObtenerTodos(){
             $sql = "SELECT * FROM publicaciones";
             $filas = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC);
 
+            return self::insertarDatosDentroDeArray($filas);
+        }
+
+        private function insertarDatosDentroDeArray($filas){
             $resultado = array();
             foreach($filas as $fila){
                 $p = new PostBlogModelo();

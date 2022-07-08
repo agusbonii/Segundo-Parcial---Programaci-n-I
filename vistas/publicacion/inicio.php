@@ -18,10 +18,6 @@
     <title>Inicio</title>
 </head>
 <body>
-    <form action="/publicacion/buscar" method="post">
-        Buscar autor: <input type="text" name="autor">
-        <input type="submit" value="Buscar">
-    </form><br><br>
     <a href="/publicacion/alta">Agregar Publicación</a><br><br>
     <?php 
     
@@ -30,13 +26,13 @@
     
     if($resultado) foreach($resultado as $fila) :
     ?>
-    <form action="/publicacion/baja" method="post">
+    <form action="/publicacion/modificar" method="post">
         <b>ID: </b>  <input type="text" name="id" value="<?=$fila -> Id?>"><br>
         <b>Autor: </b>  <input type="text" name="autor" value="<?=$fila -> Autor?>"><br>
         <b>Fecha y Hora de Publicacion: </b>  <input type="datetime" name="" value="<?=$fila -> fechaYHora?>"> <br>
         <b>Cuerpo: </b>  <input type="text" name="cuerpo" value="<?=$fila -> Cuerpo?>"><br>
-        <input type="button" onclick="window.location='/publicacion/modificacion'" value="Modificar">
-        <input type="submit" value="Borrar"><br>
+        <input type="button" onclick="window.location='/publicacion/baja?id=<?=$fila -> Id?>'" value="Borrar">
+        <input type="submit" value="Modificar"><br>
     </form><br>
 
     <?php endforeach; ?>

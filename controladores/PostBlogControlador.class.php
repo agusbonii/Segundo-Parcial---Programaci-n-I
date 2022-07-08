@@ -12,7 +12,7 @@ class PostBlogControlador {
 
     public static function Baja($context){
         $publicacion = new PostBlogModelo();
-        $publicacion -> Id = $context['post']['id'];
+        $publicacion -> Id = $context['get']['id'];
         $publicacion -> Eliminar();
     }
 
@@ -37,8 +37,7 @@ class PostBlogControlador {
     public static function BuscarTodos(){
         $publicacion = new PostBlogModelo();
         $resultado = $publicacion -> obtenerTodos();
-        if ($resultado) return $resultado; 
-        return "Mal";
+        return $resultado;
     }
 }
 
