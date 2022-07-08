@@ -11,8 +11,9 @@ class PostBlogControlador {
     }
 
     public static function Baja($context){
+        echo "<pre>"; var_dump($context);
         $publicacion = new PostBlogModelo();
-        $publicacion -> Id = $context['get']['id'];
+        $publicacion -> Id = $context['post']['id'];
         $publicacion -> Eliminar();
     }
 
