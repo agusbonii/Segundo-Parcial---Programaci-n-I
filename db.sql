@@ -5,3 +5,9 @@ CREATE TABLE usuario(
     password varchar(255)
 );
 
+CREATE TABLE publicaciones (
+	id int primary key auto_increment,
+	autor VARCHAR(50),
+	fechaYHora DATETIME,
+	cuerpo VARCHAR(255)
+);
