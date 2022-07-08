@@ -15,7 +15,7 @@
             $u = new UsuarioModelo();
             $u -> Id = $_SESSION["userID"];
             $u -> Nombre = $_SESSION['nombreUsuario'];
-            $u -> NombreCompleto = $context['post']['nombreCompleto'].
+            $u -> NombreCompleto = $context['post']['nombreCompleto'];
             $u -> Password = $context['post']['password'];
             if($u -> Guardar()) render("usuarios/modificacion",["error" => false]);
             else render("usuarios/modificacion",["error" => true]);

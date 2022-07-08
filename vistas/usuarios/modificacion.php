@@ -10,7 +10,6 @@
     
     require "../vistas/generic.php";
     $resultado = UsuarioControlador::Obtener();
-    //echo '<pre>' ; var_dump($resultado); die();
     if (!isset($resultado)) header("Location: /logout");
     
 ?>
