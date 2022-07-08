@@ -14,6 +14,7 @@ class PostBlogControlador {
     public static function Baja($context){
         $publicacion = new PostBlogModelo();
         $publicacion -> Id = $context['get']['id'];
+        $publicacion -> Autor = $_SESSION['nombreUsuario'];
         $publicacion -> Eliminar();
         return header("Location: /inicio");
     }
