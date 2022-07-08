@@ -40,7 +40,7 @@ require "../utils/autoload.php";
         }
 
         public function Eliminar(){
-            $sql = "DELETE FROM publicaciones WHERE id = " . $this ->Id;
+            $sql = "DELETE FROM publicaciones WHERE id =" . $this ->Id . " AND autor = '" . $this ->Autor . "'";
             $this -> conexionBaseDeDatos -> query($sql);
         }
 
