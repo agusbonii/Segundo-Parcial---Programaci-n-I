@@ -33,7 +33,6 @@ require "../utils/autoload.php";
 
         private function actualizar(){
             $sql = "UPDATE publicaciones SET
-            autor = '" . $this -> Autor . "',
             fechaYHora = '" . $this -> FechaYHora . "',
             cuerpo = '" . $this -> Cuerpo . "'
             WHERE id = " . $this -> Id;

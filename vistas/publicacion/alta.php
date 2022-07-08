@@ -1,3 +1,6 @@
+<?php
+    /*if(!isset($_SESSION['autenticado'])) header("Location: /login");*/
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +11,7 @@
 </head>
 <body>
     <form action="/publicacion/alta" method="post">
-        Autor: <input type="text" name="autor"><br>
+        Autor: <?=$_SESSION['nombreUsuario']?><br>
         Fecha: <input type="datetime-local" name="fechaYHora"><br>
         Cuerpo: <input type="text" name="cuerpo"><br>
         <input type="submit" value="Agregar">
