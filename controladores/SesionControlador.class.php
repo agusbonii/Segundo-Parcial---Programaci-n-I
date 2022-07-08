@@ -8,6 +8,7 @@
             $u -> Password = $context['post']['password'];
             if($u -> Autenticar($u -> Nombre, $u -> Password)){
                 SessionCreate("autenticado",true);
+                SessionCreate("userID", $u -> ObtenerID($u -> Nombre));
                 SessionCreate("nombreUsuario", $u -> Nombre);
                 header("Location: /");
 
@@ -17,7 +18,7 @@
 
         public static function CerrarSesion($context){
             session_destroy();
-            header("Location:/login");
+            header("Location: /login");
         }
 
        
