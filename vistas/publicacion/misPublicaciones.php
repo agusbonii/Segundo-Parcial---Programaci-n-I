@@ -29,7 +29,9 @@
         <input type="submit" value="Modificar"><br>
     </form><br>
 
-    <?php endforeach; ?>
-    
+    <?php 
+    endforeach; else echo "<b>No hay ningúna publicación hecha por usted</b>"; 
+    ?>
+
 </body>
 </html>

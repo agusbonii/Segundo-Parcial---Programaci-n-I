@@ -55,7 +55,7 @@ require "../utils/autoload.php";
         }
 
         public function ObtenerPublicacionAutores(){
-            $sql = "SELECT * FROM publicaciones WHERE autor = " . $this -> Autor;
+            $sql = "SELECT * FROM publicaciones WHERE autor = '" . $this -> Autor . "'";
             $filas = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC);
 
             return self::insertarDatosDentroDeArray($filas);
