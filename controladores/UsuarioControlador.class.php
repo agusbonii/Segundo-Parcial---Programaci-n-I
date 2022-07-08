@@ -24,6 +24,7 @@
         public static function Baja($context){
             $u = new UsuarioModelo();
             $u -> Id = $_SESSION["userID"];
+            $u -> Usuario = $_SESSION["nombreUsuario"];
             if ($u -> Eliminar()) header("Location: /logout");
             else render("usuarios/baja",["error" => true]);
         }
