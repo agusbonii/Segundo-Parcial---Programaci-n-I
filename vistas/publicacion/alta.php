@@ -14,7 +14,7 @@
 <body>
     <form action="/publicacion/alta" method="post">
         Autor: <?=$_SESSION['nombreUsuario']?><br>
-        Fecha: <input type="datetime-local" name="fechaYHora"><br>
+        Fecha: <input type="datetime-local" name="fechaYHora" value=<?=date('Y-m-d\TH:i:s', time())?>><br>
         Cuerpo: <input type="text" name="cuerpo"><br>
         <input type="submit" value="Agregar">
     </form>
