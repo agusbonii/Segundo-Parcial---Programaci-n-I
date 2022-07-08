@@ -10,7 +10,7 @@
                 SessionCreate("autenticado",true);
                 SessionCreate("userID", $u -> ObtenerID($u -> Nombre));
                 SessionCreate("nombreUsuario", $u -> Nombre);
-                header("Location: /");
+                header("Location: /inicio");
 
             }
             render("login",["error" => true]);

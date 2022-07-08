@@ -2,7 +2,7 @@
     require "../utils/autoload.php";
 
      if(isset($_SESSION['autenticado']))
-        header("Location: /");
+        header("Location: /inicio");
 ?>
 <!DOCTYPE html>
 <html lang="en">

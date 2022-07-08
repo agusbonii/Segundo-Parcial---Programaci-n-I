@@ -1,7 +1,7 @@
 <?php
     require "../utils/autoload.php";
     
-    /*if(!isset($_SESSION['autenticado'])) header("Location: /login");*/
+    if(!isset($_SESSION['autenticado'])) header("Location: /login");
 ?>
 <!DOCTYPE html>
 <html lang="es">
