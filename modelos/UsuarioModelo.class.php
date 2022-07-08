@@ -28,9 +28,7 @@ require "../utils/autoload.php";
             '" . $this -> NombreCompleto . "',
             '" . $this -> hashearPassword($this -> Password) . "')";
 
-            $this -> conexionBaseDeDatos -> query($sql);
-            if ($this -> conexionBaseDeDatos -> error_list[0]['errno'] == 0) return true;
-            else return false;
+            return $this -> llamarConexionDevuelveError($sql);
         }
 
         private function hashearPassword($password){
@@ -43,9 +41,16 @@ require "../utils/autoload.php";
             complete_name = '" . $this -> NombreCompleto . "',
             password = '" . $this -> hashearPassword($this -> Password) . "'
             WHERE id = " . $this -> Id;
-            $this -> conexionBaseDeDatos -> query($sql);
-            if ($this -> conexionBaseDeDatos -> error_list[0]['errno'] == 0) return true;
-            else return false;
+            return $this -> llamarConexionDevuelveError($sql);
+        }
+
+        public function Eliminar(){
+            $sql = "DELETE FROM publicaciones WHERE autor = '" . $this -> Usuario . "';";
+            $errorBajaPublicaciones = $this -> llamarConexionDevuelveError($sql);
+            $sql = "DELETE FROM usuario WHERE id = " . $this ->Id . ";";
+            $errorBajaUsuario = $this -> llamarConexionDevuelveError($sql);
+            if ($errorBajaPublicaciones AND $errorBajaUsuario) return true;
+            return false;
         }
 
         public function Obtener(){
@@ -63,13 +68,6 @@ require "../utils/autoload.php";
             $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
             $Id = $fila['id'];
             return $Id;
-        }
-
-        public function Eliminar(){
-            $sql = "DELETE FROM usuario WHERE id = " . $this ->Id;
-            $this -> conexionBaseDeDatos -> query($sql);
-            if ($this -> conexionBaseDeDatos -> error_list[0]['errno'] == 0) return true;
-            else return false;
         }
 
         public function ObtenerTodos(){
@@ -100,6 +98,12 @@ require "../utils/autoload.php";
 
         private function compararPasswords($passwordHasheado){
             return password_verify($this -> Password, $passwordHasheado);
+        }
+
+        private function llamarConexionDevuelveError($sql){
+            $this -> conexionBaseDeDatos -> query($sql);
+            if ($this -> conexionBaseDeDatos -> error_list[0]['errno'] == 0) return true;
+            else return false;
         }
 
     }
