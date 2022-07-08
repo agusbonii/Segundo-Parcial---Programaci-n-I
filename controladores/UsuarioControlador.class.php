@@ -7,8 +7,8 @@
             $u -> Nombre = $context['post']['usuario'];
             $u -> NombreCompleto = $context['post']['nombreCompleto'];
             $u -> Password = $context['post']['password'];
-            if ($u -> Guardar()) render("usuarios/alta",["error" => false]);
-            else render("usuarios/alta",["error" => true]);
+            
+            return self::validarGuardado($u,"alta");
         }
 
         public static function Modificacion($context){
@@ -17,8 +17,15 @@
             $u -> Nombre = $_SESSION['nombreUsuario'];
             $u -> NombreCompleto = $context['post']['nombreCompleto'];
             $u -> Password = $context['post']['password'];
-            if($u -> Guardar()) render("usuarios/modificacion",["error" => false]);
-            else render("usuarios/modificacion",["error" => true]);
+
+            if ($u -> Autenticar($u -> Nombre, $u -> Password)){
+                return self::validarGuardado($u,"modificacion");
+            }
+        }
+
+        private function validarGuardado($usuario, $vista){
+            if($usuario -> Guardar()) return render("usuarios/$vista",["error" => false]);
+            else return render("usuarios/$vista",["error" => true]);
         }
 
         public static function Baja($context){
