@@ -21,6 +21,7 @@
             if ($u -> Autenticar($u -> Nombre, $u -> Password)){
                 return self::validarGuardado($u,"modificacion");
             }
+            return render("usuarios/modificacion",["error" => true]);
         }
 
         private function validarGuardado($usuario, $vista){
