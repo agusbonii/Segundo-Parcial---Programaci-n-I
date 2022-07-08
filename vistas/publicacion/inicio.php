@@ -29,7 +29,7 @@
     <form action="/publicacion/modificacion" method="post">
         <b>ID: </b>  <input type="text" name="id" value="<?=$fila -> Id?>"><br>
         <b>Autor: </b>  <input type="text" name="autor" value="<?=$fila -> Autor?>"><br>
-        <b>Fecha y Hora de Publicacion: </b>  <input type="datetime" name="" value="<?=$fila -> fechaYHora?>"> <br>
+        <b>Fecha y Hora de Publicacion: </b>  <input type="datetime-local" name="fechaYHora" value="<?=$fila -> FechaYHora?>"> <br>
         <b>Cuerpo: </b>  <input type="text" name="cuerpo" value="<?=$fila -> Cuerpo?>"><br>
         <input type="button" onclick="window.location='/publicacion/baja?id=<?=$fila -> Id?>'" value="Borrar">
         <input type="submit" value="Modificar"><br>

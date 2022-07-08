@@ -8,12 +8,14 @@ class PostBlogControlador {
         $publicacion -> FechaYHora = $context['post']['fechaYHora'];
         $publicacion -> Cuerpo = $context['post']['cuerpo'];
         $publicacion -> Guardar();
+        return renderVista("publicacion/inicio");
     }
 
     public static function Baja($context){
         $publicacion = new PostBlogModelo();
         $publicacion -> Id = $context['get']['id'];
         $publicacion -> Eliminar();
+        return renderVista("publicacion/inicio");
     }
 
     public static function Modificacion($context){
@@ -23,6 +25,7 @@ class PostBlogControlador {
         $publicacion -> FechaYHora = $context['post']['fechaYHora'];
         $publicacion -> Cuerpo = $context['post']['cuerpo'];
         $publicacion -> Guardar();
+        return renderVista("publicacion/inicio");
     }
 
     public static function BuscarUno($context){
