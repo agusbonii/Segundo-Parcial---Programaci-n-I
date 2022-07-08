@@ -6,6 +6,7 @@
     $Seccion="Crear Usuario";
     require "../vistas/generic.php";
 ?>
+    <a href="/">Inicio</a>
     <form action="/usuarios/alta" method="post">
         Usuario <input type="text" name="usuario" required> <br />
         Nombres <input type="text" name="nombres" required> <br />
