@@ -18,8 +18,8 @@ require "../utils/autoload.php";
         }
 
         public function Guardar(){
-            if($this -> Id == NULL) $this -> insertar();
-            else $this -> actualizar();
+            if($this -> Id == NULL) return $this -> insertar();
+            else return $this -> actualizar();
         }
 
         private function insertar(){
@@ -27,8 +27,7 @@ require "../utils/autoload.php";
             '" . $this -> Autor . "',
             '" . $this -> FechaYHora . "',
             '" . $this -> Cuerpo . "')";
-
-            $this -> conexionBaseDeDatos -> query($sql);
+            return $this -> llamarConexionDevuelveError($sql);
         }
 
         private function actualizar(){
@@ -36,12 +35,12 @@ require "../utils/autoload.php";
             fechaYHora = '" . $this -> FechaYHora . "',
             cuerpo = '" . $this -> Cuerpo . "'
             WHERE id = " . $this -> Id;
-            $this -> conexionBaseDeDatos -> query($sql);
+            return $this -> llamarConexionDevuelveError($sql);
         }
 
         public function Eliminar(){
             $sql = "DELETE FROM publicaciones WHERE id = " . $this ->Id;
-            $this -> conexionBaseDeDatos -> query($sql);
+            return $this -> llamarConexionDevuelveError($sql);
         }
 
         public function Obtener(){
@@ -79,6 +78,12 @@ require "../utils/autoload.php";
                 array_push($resultado,$p);
             }
             return $resultado;
+        }
+
+        private function llamarConexionDevuelveError($sql){
+            $this -> conexionBaseDeDatos -> query($sql);
+            if ($this -> conexionBaseDeDatos -> error_list[0]['errno'] == 0) return true;
+            else return false;
         }
 
     }

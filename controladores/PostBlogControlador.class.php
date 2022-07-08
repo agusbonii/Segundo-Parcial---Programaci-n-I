@@ -7,15 +7,17 @@ class PostBlogControlador {
         $publicacion -> Autor = $_SESSION['nombreUsuario'];
         $publicacion -> FechaYHora = $context['post']['fechaYHora'];
         $publicacion -> Cuerpo = $context['post']['cuerpo'];
-        $publicacion -> Guardar();
-        return header("Location: /inicio");
+        
+        if ($publicacion -> Guardar()) return header("Location: /inicio");
+        else render("publicacion/alta",["error" => true]);
     }
 
     public static function Baja($context){
         $publicacion = new PostBlogModelo();
         $publicacion -> Id = $context['get']['id'];
-        $publicacion -> Eliminar();
-        return header("Location: /inicio");
+        
+        if ($publicacion -> Eliminar()) return header("Location: /inicio");
+        else render("publicacion/mispublicaciones",["error" => true]);
     }
 
     public static function Modificacion($context){
@@ -23,8 +25,9 @@ class PostBlogControlador {
         $publicacion -> Id = $context['post']['id'];
         $publicacion -> FechaYHora = $context['post']['fechaYHora'];
         $publicacion -> Cuerpo = $context['post']['cuerpo'];
-        $publicacion -> Guardar();
-        return header("Location: /inicio");
+
+        if ($publicacion -> Guardar()) return header("Location: /inicio");
+        else render("publicacion/mispublicaciones",["error" => true]);
     }
 
     public static function BuscarUno($context){
