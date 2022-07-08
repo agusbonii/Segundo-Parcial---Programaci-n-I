@@ -9,8 +9,7 @@
 ?>
     <form action="/usuarios/alta" method="post">
         Usuario <input type="text" name="usuario" required> <br />
-        Nombres <input type="text" name="nombres" required> <br />
-        Apellidos <input type="text" name="apellidos" required> <br />
+        Nombre Completo <input type="text" name="nombreCompleto" required> <br />
         Password <input type="password" name="password" required> <br />
         <input type="submit" value="Crear usuario">
     </form>
