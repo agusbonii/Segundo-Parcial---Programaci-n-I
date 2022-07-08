@@ -13,3 +13,15 @@
 <body>
     <h1>Fabrica de Chacinados - <?= $Seccion ?></h1>
     <a href="/inicio">Inicio</a>
+    <?php if (isset($_SESSION["nombreUsuario"])) : ?>
+        <a href="/publicacion/mispublicaciones">Mis Publicaciones</a>
+        <a href="/publicacion/alta">Agregar Publicación</a>
+        <a href="/usuarios/modificacion">Modificar perfil</a>
+        <a href="/usuarios/baja">Darse de baja</a>
+        <a href="/logout">Cerrar Sesion</a>
+    <?php endif; ?>
+    <?php if (!isset($_SESSION["nombreUsuario"])) : ?>
+        <a href="/login">Iniciar Sesion</a>
+    <?php endif; ?>
+
+    <br />

@@ -6,7 +6,9 @@
     if(!isset($_SESSION['nombreUsuario']))
         header('Location: /login');
     
-    
+    $Seccion = "Dar baja usuario";
+
+    require "../vistas/generic.php";
 ?>
     <script language="JavaScript">
         function confirmar(){
@@ -22,4 +24,4 @@
     <?php if(isset($parametros['error']) && $parametros['error'] === true ) :?>
         <div style="color: red;">Ocurrió un problema al eliminar tu usuario.</div>
     <?php endif;?>
-    <?php if(isset($parametros['error']) && $parametros['error'] === false ) header("Location: /login");?>
+    <?php if(isset($parametros['error']) && $parametros['error'] === false ) header("Location: /logout");?>

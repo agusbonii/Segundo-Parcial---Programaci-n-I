@@ -7,6 +7,7 @@
         header('Location: /login');
 
     $Seccion="Modificar Perfil";
+    
     require "../vistas/generic.php";
 ?>
     <form action="/usuarios/modificacion" method="post">

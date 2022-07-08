@@ -4,6 +4,7 @@
         header("Location: /inicio");
 
     $Seccion="Crear Usuario";
+    
     require "../vistas/generic.php";
 ?>
     <form action="/usuarios/alta" method="post">
