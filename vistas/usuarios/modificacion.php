@@ -16,7 +16,7 @@
     <form action="/usuarios/modificacion" method="post">
         Usuario <input type="text" name="usuario" value=<?=$resultado['Nombre']?> readonly> <br />
         Nombre Completo <input type="text" name="nombreCompleto" value="<?=$resultado['NombreCompleto']?>" require> <br />
-        Password <input type="password" name="password" require> <br />
+        Coloque la Password para confirmar <input type="password" name="password" require> <br />
         <input type="submit" value="Modificar Sesión">
     </form>
     <?php if(isset($parametros['error']) && $parametros['error'] === true ) :?>
